@@ -25,24 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = obj_mech1.x;
-y = obj_mech1.y
+            <string>x = obj_paprika.x;
+y = obj_paprika.y
 
-if(obj_mech1.face == 1){
-image_xscale = 1;
-}
-if(obj_mech1.face == 0){
-image_xscale = -1;
-}
+image_xscale = obj_paprika.image_xscale;
 
 
-if(obj_mech1.attack == false){
-    image_speed = .3;
-    sprite_index = spr_orbs_normal;
-}
-if(obj_mech1.attack == true){
-    image_speed = .8;
+
+if(obj_paprika.state == states.attack)
+{
     sprite_index = spr_orbs_attacking;
+    image_speed = .2 //room_speed/3
+}
+else
+{
+    sprite_index = spr_orbs_normal;
+    image_speed = .1 //room_speed/6
+}
+
+
+
+
+/*
+if (obj_paprika.state == states.normal)
+{
+    sprite_index = spr_orbs_normal;
+    image_speed = room_speed/6
 }
 </string>
           </argument>

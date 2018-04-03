@@ -11,6 +11,7 @@ if(place_meeting(x, y+1, obj_colBox))
     if(jkey)
         {
         vspd = -jspd;
+        image_index = 0
         }
     
 } 
@@ -18,30 +19,29 @@ if(place_meeting(x, y+1, obj_colBox))
 else
 {
     // Gravity
-    if (vspd < 10)
+    if (vspd < 12)
        {
           vspd += grav;
        }
-
+}
     //Check for airjump
-    if(idMech == 1)
-    {
-        if (airjump > 0) 
+
+/*if (airjump > 0) 
         {
             if(jkey)
+            image_index = 0
             {
                 vspd = -jspd;
                 airjump -= 1;
             }
         }
-    }
     
     if(keyboard_check_released(vk_up) && vspd <-4)
         {
         vspd = -4;
         }
 }
-
+*/
 // Moving Right
 if(rkey)
 {
@@ -57,10 +57,9 @@ face = 0;
    }   
 }
 //Left Wall Jump
-    if(idMech == 1)
-    {
-        if(wall < 3) and jkey
+if(wall < 3) and jkey
         {
+        image_index = 0
             if (place_meeting(x-1, y , obj_colBox)) && !place_meeting(x, y+1, obj_colBox)
             {
              vspd =-jspd
@@ -75,8 +74,7 @@ face = 0;
         else if place_meeting(x, y+1, obj_colBox)
             {
             wall = 0
-            }    
-    }
+            }   
 
 
 
@@ -85,6 +83,7 @@ face = 0;
 if(lkey)
 {
 face = 1;
+
   if(hspd > spd)
   {
   hspd -= fric;
@@ -96,10 +95,9 @@ face = 1;
 }
 
 //Right Wall Jump
-if(idMech == 1)
-{
-        if(wall < 3) and jkey
+if(wall < 3) and jkey
         {
+        image_index = 0
             if (place_meeting(x+1, y , obj_colBox)) && !place_meeting(x, y+1, obj_colBox)
             {
             vspd =-jspd
@@ -110,7 +108,7 @@ if(idMech == 1)
             {
             wall = 0
             }    
-}
+
 
 //Check for not moving
 if((!rkey && !lkey) ||(rkey && lkey))
@@ -128,7 +126,7 @@ if((!rkey && !lkey) ||(rkey && lkey))
     }
 }
 
-
+/*
 //Horizontal Collision
 if(place_meeting(x+hspd, y, obj_colBox))
 {
@@ -154,42 +152,28 @@ if(place_meeting(x, y+vspd, obj_colBox))
 
 //Move Vertically
 y+= vspd;
+*/
+
+
+
+
+
+
+
+
+
 
 //Attack
 if(akey)
 {
     state = states.attack;
+    image_index = 0
 }
 if(sakey)
 {
     state = states.sattack;
 }
 
-
-/*
-//Control Sprites
-if(yprevious !=y){
-    sprite_index = spr_player_jump;
-    image_speed = 1;
-} else{
-    if(xprevious !=x){
-    sprite_index = spr_player_walk;
-    image_speed = 0.8;
-    }
-    else{
-    sprite_index = spr_player_stand; 
-       }
-}
-*/
-
-//Control Direction Player is Facing
-/*
-if(xprevious < x){
-image_xscale = 1;
-}else if (xprevious > x){
-image_xscale = -1;
-}
-*/
 
 
 //state - Changing
@@ -201,11 +185,54 @@ if global.p1_changing = true
 
 //state - First Skill
 
-if (skey) and (first_CD = 0)
+if (skey) and (first_CD = 0) and hspd != 0
 {
-   state = first_skill
+   sprite_index = spr_paprika_attack
+   image_index = 3
+   first_CD = 1
+   alarm[0] = 10
+   state = states.dash
+   
 }
 
 
+
+
+//SPRITE CONTROL
+
+if(hspd == 0 and vspd == 0 and place_meeting(x, y+1,obj_colBox))
+    {
+        sprite_index = spr_paprika_idle;
+        image_speed = .1//room_speed/6;
+        
+    }
+    
+if(hspd > 0 or hspd < 0)
+    {
+        sprite_index = spr_paprika_walk
+        image_speed = .1//room_speed/4
+               
+    }
+    
+if(vspd < 0)
+    {
+        sprite_index = spr_paprika_jump;
+        image_speed = .1//room_speed/6;
+        
+        
+    }
+if(vspd > 0)
+    {
+        sprite_index = spr_paprika_fall;
+        image_speed = .1//room_speed/6;
+        
+    }
+if(state == states.dash)
+{
+    {
+        sprite_index = spr_paprika_attack
+    }
+}
+    
 
 

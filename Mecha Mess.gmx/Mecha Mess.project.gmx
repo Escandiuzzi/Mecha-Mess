@@ -36,9 +36,10 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Mechs">
-      <script>scripts\scr_inactive.gml</script>
-      <script>scripts\scr_active.gml</script>
-      <script>scripts\scr_sprite_control.gml</script>
+      <scripts name="General">
+        <script>scripts\scr_active.gml</script>
+        <script>scripts\scr_inactive.gml</script>
+      </scripts>
       <scripts name="Movement States">
         <script>scripts\scr_jetpack.gml</script>
         <script>scripts\scr_change.gml</script>
@@ -50,6 +51,14 @@
       <scripts name="bb-boy scripts">
         <script>scripts\scr_fuel.gml</script>
       </scripts>
+      <scripts name="Paprika">
+        <script>scripts\scr_move_paprika.gml</script>
+        <script>scripts\scr_attack_paprika.gml</script>
+        <script>scripts\scr_dash_paprika.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="LIXEIRA">
+      <script>scripts\scr_sprite_control.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -60,7 +69,7 @@
       <object>objects\obj_controller</object>
     </objects>
     <objects name="Paprika">
-      <object>objects\obj_mech1</object>
+      <object>objects\obj_paprika</object>
       <object>objects\obj_paprika_orbs</object>
       <object>objects\obj_hitbox</object>
       <object>objects\obj_dash_effect</object>
@@ -69,6 +78,7 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_mech2</object>
     <object>objects\obj_mech3</object>
+    <object>objects\obj_teste_vision</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

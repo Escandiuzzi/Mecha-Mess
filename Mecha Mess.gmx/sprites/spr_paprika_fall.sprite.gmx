@@ -9,8 +9,8 @@
   <bboxmode>0</bboxmode>
   <bbox_left>17</bbox_left>
   <bbox_right>55</bbox_right>
-  <bbox_top>22</bbox_top>
-  <bbox_bottom>60</bbox_bottom>
+  <bbox_top>16</bbox_top>
+  <bbox_bottom>53</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -21,5 +21,6 @@
   <height>64</height>
   <frames>
     <frame index="0">images\spr_paprika_fall_0.png</frame>
+    <frame index="1">images\spr_paprika_fall_1.png</frame>
   </frames>
 </sprite>

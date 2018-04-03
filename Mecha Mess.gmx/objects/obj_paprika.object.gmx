@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>grav = 1;
-spd = 7;
-jspd = 12;
+            <string>grav = .4;
+spd = 4;
+jspd = 7;
 vspd = 0;
 hspd = 0;
 fric = 1;
@@ -43,7 +43,7 @@ airjump = 1;
 mech_sprite = spr_mech1;
 fuel = 30;
 first_CD = 0;
-first_skill = states.jetpack;
+first_skill = states.dash;
 
 
 //state machines
@@ -143,7 +143,8 @@ instance_destroy(obj_hitbox);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state = states.normal;
+            <string>first_CD = 0
+state = states.normal;
 
 </string>
           </argument>
@@ -167,7 +168,9 @@ instance_destroy(obj_hitbox);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//script_execute(get_input);
+            <string>///STATE MACHINE
+
+//script_execute(get_input);
 scr_collision();
 
 //active or inactive mech
@@ -182,19 +185,19 @@ if (global.p1_mech != 1)
 switch (state)
 {
     case states.normal:
-        scr_move();
+        scr_move_paprika();
         break;
     case states.change:
         scr_change();
         break;
     case states.attack:
-        scr_attack();
+        scr_attack_paprika();
         break;
      case states.sattack:
         scr_attack_second();
         break; 
-    case states.jetpack:
-        scr_jetpack();
+    case states.dash:
+        scr_dash_paprika();
         break;
     case states.inactive:
         scr_inactive();
@@ -202,34 +205,10 @@ switch (state)
         
 }
 
-if(hspd == 0 and vspd == 0){
-        image_speed = .3;
-        sprite_index = spr_paprika_idle;
-    }
-    
-    if(hspd &gt; 0 or hspd &lt; 0){
-    
-        sprite_index = spr_paprika_walk
-    }
-    
-    if(vspd &lt; 0){
-        sprite_index = spr_paprika_jump;
-    }
-     if(vspd &gt; 0){
-        sprite_index = spr_paprika_fall;
-    }
-    
-    if(attack == true){
-        image_speed = .8;
-        sprite_index = spr_paprika_attack;
-    }
-    
-if(face == 1){
-image_xscale = 1;
-}
-if(face == 0){
-image_xscale = -1;
-}
+
+
+
+
 
 /*
 //state active/inactive
@@ -246,6 +225,77 @@ else
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///SPRITE CONTROL
+
+
+/*
+if(hspd == 0 and vspd == 0)
+    {
+        sprite_index = spr_paprika_idle;
+        image_speed = .5//room_speed/6;
+        
+    }
+    
+    if(hspd &gt; 0 or hspd &lt; 0)
+    {
+        sprite_index = spr_paprika_walk
+        image_speed = .7//room_speed/4
+       
+    }
+    
+    if(vspd &lt; 0)
+    {
+        sprite_index = spr_paprika_jump;
+        image_speed = .5//room_speed/6;
+        
+        
+    }
+     if(vspd &gt; 0)
+    {
+        sprite_index = spr_paprika_fall;
+        image_speed = .5//room_speed/6;
+        
+    }
+    
+    if state == states.attack
+    {      
+        sprite_index = spr_paprika_attack;
+        image_speed = .10 //room_speed/3;
+        
+    }
+   
+   */
+
+var enemyDir = point_direction(x, y, obj_teste_vision.x, obj_teste_vision.y)     
+
+if  enemyDir &gt; 270 or enemyDir &lt; 90
+{
+    image_xscale = -1
+}
+else
+{
+    image_xscale = 1
+}
 </string>
           </argument>
         </arguments>
@@ -298,6 +348,32 @@ hspd = obj_portal2.tSpeed;
 y = obj_portal1.directiony;
 vspd = 0;
 hspd = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if sprite_index = spr_paprika_attack
+{
+    state = states.normal
+}
 </string>
           </argument>
         </arguments>

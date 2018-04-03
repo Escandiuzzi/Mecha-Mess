@@ -10,7 +10,7 @@ if(idMech == 1){
     instance_create(x,y,obj_hitbox);
     }
     alarm[0] = 1;
-    alarm[2] = 8;
+    alarm[2] = .8;
 }
 
 if(idMech == 2){
