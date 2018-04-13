@@ -28,4 +28,4 @@ lkey = keyboard_check(vk_left) || gamepad_button_check(0, gp_padl);
 jkey = keyboard_check_pressed(vk_up) || gamepad_button_check_pressed(0, gp_face1);
 skey = keyboard_check(vk_shift) || gamepad_button_check_pressed(0, gp_shoulderlb);
 akey = keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(0, gp_face3); 
-sakey = keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(0, gp_face2); 
+sakey = keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(0, gp_shoulderrb); 

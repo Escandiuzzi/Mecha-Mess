@@ -74,6 +74,9 @@ state = states.normal;
             <kind>1</kind>
             <string>state = states.normal;
 attack = false;
+
+
+
 </string>
           </argument>
         </arguments>
@@ -172,6 +175,7 @@ state = states.normal;
 
 //script_execute(get_input);
 scr_collision();
+move_wrap(true, true, 1)
 
 //active or inactive mech
 if (global.p1_mech != 1)

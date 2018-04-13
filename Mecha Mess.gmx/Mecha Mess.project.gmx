@@ -13,6 +13,7 @@
       <sprite>sprites\spr_paprika_jump</sprite>
       <sprite>sprites\spr_paprika_fall</sprite>
       <sprite>sprites\spr_paprika_attack</sprite>
+      <sprite>sprites\spr_paprika_KB</sprite>
       <sprite>sprites\spr_orbs_normal</sprite>
       <sprite>sprites\spr_orbs_attacking</sprite>
     </sprites>
@@ -31,6 +32,9 @@
     <sprite>sprites\spr_bullet_left</sprite>
     <sprite>sprites\spr_portal2</sprite>
     <sprite>sprites\spr_portal1</sprite>
+    <sprites name="range">
+      <sprite>sprites\spr_paprike_range</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -46,7 +50,6 @@
         <script>scripts\scr_collision.gml</script>
         <script>scripts\scr_move.gml</script>
         <script>scripts\scr_attack.gml</script>
-        <script>scripts\scr_attack_second.gml</script>
       </scripts>
       <scripts name="bb-boy scripts">
         <script>scripts\scr_fuel.gml</script>
@@ -55,6 +58,8 @@
         <script>scripts\scr_move_paprika.gml</script>
         <script>scripts\scr_attack_paprika.gml</script>
         <script>scripts\scr_dash_paprika.gml</script>
+        <script>scripts\scr_knockback_paprika.gml</script>
+        <script>scripts\scr_attack_second.gml</script>
       </scripts>
     </scripts>
     <scripts name="LIXEIRA">
@@ -73,6 +78,7 @@
       <object>objects\obj_paprika_orbs</object>
       <object>objects\obj_hitbox</object>
       <object>objects\obj_dash_effect</object>
+      <object>objects\obj_paprika_bullet</object>
     </objects>
     <object>objects\obj_hadouken</object>
     <object>objects\obj_bullet</object>

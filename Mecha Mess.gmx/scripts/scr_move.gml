@@ -134,7 +134,7 @@ if(place_meeting(x+hspd, y, obj_colBox))
 {
     while(!place_meeting(x+sign(hspd), y, obj_colBox))
     {
-    x+=sign(hspd)
+        x+=sign(hspd)
     }
     hspd = 0;
 }
@@ -155,14 +155,16 @@ if(place_meeting(x, y+vspd, obj_colBox))
 //Move Vertically
 y+= vspd;
 
-//Attack
-if(akey)
+//////////////////////////////////ATTACKS
+if(akey) and !attack
 {
+    attack = true
     state = states.attack;
 }
-if(sakey)
+if(sakey) and !attack
 {
-    state = states.sattack;
+    attack = true
+    state = states.sattack;    
 }
 
 
@@ -205,7 +207,5 @@ if (skey) and (first_CD = 0)
 {
    state = first_skill
 }
-
-
 
 
