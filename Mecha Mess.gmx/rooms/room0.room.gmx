@@ -198,20 +198,10 @@
     <instance objName="obj_colBox" x="336" y="288" name="inst_5CE8DA19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="352" y="288" name="inst_1363BCEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="368" y="288" name="inst_B6D2BF5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="544" y="304" name="inst_4E3771FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="544" y="288" name="inst_DE964E99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="544" y="272" name="inst_651CAB6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="544" y="256" name="inst_952AAA60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="544" y="160" name="inst_25655021" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="544" y="176" name="inst_7D6A26AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="544" y="144" name="inst_501C3309" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="544" y="320" name="inst_E6DBCAC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="544" y="128" name="inst_6A35CA6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="528" y="256" name="inst_B0905F9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="512" y="256" name="inst_51CCD8A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="496" y="256" name="inst_5099FC55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="480" y="256" name="inst_DD611FD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="464" y="256" name="inst_7F626854" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="544" y="112" name="inst_B756ECD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="192" y="208" name="inst_B22CB006" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="176" y="208" name="inst_BAE1CF0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -243,9 +233,6 @@
     <instance objName="obj_colBox" x="400" y="144" name="inst_8A45FF2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="416" y="144" name="inst_AF3D338C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="544" y="96" name="inst_FD4D209E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="432" y="160" name="inst_E02E4A21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="448" y="176" name="inst_564DCD43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_colBox" x="464" y="192" name="inst_BF3E95E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_clock2" x="0" y="384" name="inst_C9BC7F88" locked="0" code="" scaleX="1" scaleY="-24" colour="4294967295" rotation="0"/>
     <instance objName="obj_clock2" x="0" y="384" name="inst_AD29BBB3" locked="0" code="" scaleX="1" scaleY="-24" colour="4294967295" rotation="0"/>
     <instance objName="obj_clock2" x="624" y="384" name="inst_0DB332DC" locked="0" code="" scaleX="1" scaleY="-24" colour="4294967295" rotation="0"/>

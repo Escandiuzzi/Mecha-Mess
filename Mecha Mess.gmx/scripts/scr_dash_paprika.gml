@@ -1,7 +1,7 @@
 ///scr_dash_paprika
 
 sprite_index = spr_paprika_attack
-
+image_xscale = obj_paprika.image_xscale
 image_speed = 0
 image_index = 3
 attack = true;
