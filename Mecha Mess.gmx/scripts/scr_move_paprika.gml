@@ -24,24 +24,10 @@ else
           vspd += grav;
        }
 }
-    //Check for airjump
+//Check for airjump
 
-/*if (airjump > 0) 
-        {
-            if(jkey)
-            image_index = 0
-            {
-                vspd = -jspd;
-                airjump -= 1;
-            }
-        }
-    
-    if(keyboard_check_released(vk_up) && vspd <-4)
-        {
-        vspd = -4;
-        }
-}
-*/
+
+
 // Moving Right
 if(rkey)
 {
@@ -103,6 +89,10 @@ if(wall < 3) and jkey
             vspd =-jspd
             wall++;
             }
+            if airjump = 1
+            {
+                airjump = 1
+            }
         }
         else if place_meeting(x, y+1, obj_colBox)
             {
@@ -125,6 +115,31 @@ if((!rkey && !lkey) ||(rkey && lkey))
         }
     }
 }
+
+///AIRJUMP
+/*
+if (airjump > 0) 
+        {
+            if(jkey)
+            image_index = 0
+            {
+                vspd = -jspd;
+                airjump -= 1;
+            }
+        }
+    
+    if(keyboard_check_released(vk_up) && vspd <-4)
+        {
+        vspd = -4;
+        }
+*/
+
+
+
+
+
+
+
 
 /*
 //Horizontal Collision
