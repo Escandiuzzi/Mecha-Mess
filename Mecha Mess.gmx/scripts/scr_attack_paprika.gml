@@ -2,6 +2,14 @@
 scr_active();
 
 attack = true;
+
+if (alarm[2] <= 0) and (hb1 = false)
+{
+    alarm[2] = 12
+    hb1 = true
+}
+
+/*
 if(face == 0)
     {
     instance_create(x,y, obj_hitbox);
@@ -12,6 +20,10 @@ if(face == 0)
     }
     //alarm[0] = 1;
     //alarm[2] = .8;
+*/
+
+
+
 
 // Gravity
     if (vspd < 15)
@@ -78,3 +90,15 @@ if(hspd != 0)
         sprite_index = spr_paprika_attack;
         image_speed = .2 //room_speed/3;        
     }
+    
+///Create Hitbox
+
+/*
+if image_index = 3
+{
+   instance_create(x,y,obj_paprika_hitbox)
+}
+else if image_index = 5
+{
+    //instance_destroy(obj_paprika_hitbox)
+}

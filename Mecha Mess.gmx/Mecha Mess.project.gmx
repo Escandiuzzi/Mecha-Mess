@@ -26,7 +26,7 @@
     <sprite>sprites\spr_mech2_idle</sprite>
     <sprite>sprites\spr_change</sprite>
     <sprite>sprites\spr_mech1</sprite>
-    <sprite>sprites\spr_melee</sprite>
+    <sprite>sprites\spr_paprika_hitbox</sprite>
     <sprite>sprites\spr_mech2</sprite>
     <sprite>sprites\spr_mech3</sprite>
     <sprite>sprites\spr_alarm</sprite>
@@ -98,7 +98,7 @@
     <objects name="Paprika">
       <object>objects\obj_paprika</object>
       <object>objects\obj_paprika_orbs</object>
-      <object>objects\obj_hitbox</object>
+      <object>objects\obj_paprika_hitbox</object>
       <object>objects\obj_dash_effect</object>
       <object>objects\obj_paprika_bullet</object>
     </objects>

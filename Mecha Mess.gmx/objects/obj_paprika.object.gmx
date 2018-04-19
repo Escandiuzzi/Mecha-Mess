@@ -3,7 +3,7 @@
   <spriteName>spr_paprika_idle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_collision</maskName>
@@ -50,6 +50,10 @@ max_hp = 100;
 //state machines
 get_input = scr_active;
 state = states.normal;
+
+//hitbox
+hb1 = false
+
 
 </string>
           </argument>
@@ -101,7 +105,9 @@ attack = false;
           <argument>
             <kind>1</kind>
             <string>attack = false;
-instance_destroy(obj_hitbox);
+
+instance_create(x,y,obj_paprika_hitbox);
+
 </string>
           </argument>
         </arguments>
@@ -402,6 +408,7 @@ hspd = 0;
             <string>if sprite_index = spr_paprika_attack
 {
     state = states.normal
+    hb1 = false
 }
 </string>
           </argument>
