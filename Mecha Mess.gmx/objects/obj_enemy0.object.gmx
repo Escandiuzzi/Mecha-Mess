@@ -25,8 +25,90 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hp = 100
+            <string>//initial variables
+hp = 100
+state = scr_enemy0_idle
+
 image_speed = 0
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///GOES TO MOVE STATE
+if state != scr_enemy0_alert
+{
+state = scr_enemy0_move
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///BACK TO IDLE
+
+state = scr_enemy0_idle
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///CREATE BULLET
+
+instance_create(x,y,obj_bullet)
 </string>
           </argument>
         </arguments>
@@ -49,14 +131,67 @@ image_speed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var dis = point_distance(x,y,obj_paprika.x,obj_paprika.y)
-var dir = collision_line(x,y,obj_paprika.x,obj_paprika.y,obj_colBox,false,true) 
+            <string>///STEP 1
+move_wrap(true, true, 1)
 
-if !dir and dis &lt; 100
+///State machine
+script_execute(state)
+
+
+///Goes to alert state
+var dis = point_distance(x,y,obj_paprika.x,obj_paprika.y)
+var coLine = collision_line(x,y,obj_paprika.x,obj_paprika.y,obj_colBox,false,true) 
+
+
+
+
+//gravity
+if !place_meeting(x,y+4,obj_colBox)
 {
-    instance_create(x,y,obj_bullet)
+    y += 3;
 }
 
+
+///wall collision
+
+if place_meeting(x+2,y,obj_colBox)
+{
+    image_xscale = -1
+}
+
+if place_meeting(x-2,y,obj_colBox)
+{
+    image_xscale = 1
+}
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if state = scr_enemy0_move
+{
+    state = scr_enemy0_idle
+}
 
 </string>
           </argument>

@@ -80,6 +80,13 @@
     <scripts name="LIXEIRA">
       <script>scripts\scr_sprite_control.gml</script>
     </scripts>
+    <scripts name="Enemies">
+      <scripts name="Enemy0">
+        <script>scripts\scr_enemy0_move.gml</script>
+        <script>scripts\scr_enemy0_idle.gml</script>
+        <script>scripts\scr_enemy0_alert.gml</script>
+      </scripts>
+    </scripts>
   </scripts>
   <objects name="objects">
     <objects name="GameObjects">
