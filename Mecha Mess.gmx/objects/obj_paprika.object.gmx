@@ -37,6 +37,7 @@ attack = false;
 wall = 0;
 face = 0;
 mspd = 7;
+
 //personal and unique variables for this mech skills
 
 airjump = 1;
@@ -44,9 +45,9 @@ mech_sprite = spr_mech1;
 fuel = 30;
 first_CD = 0;
 first_skill = states.dash;
-
 hp = 100;
 max_hp = 100;
+
 //state machines
 get_input = scr_active;
 state = states.normal;
@@ -54,7 +55,35 @@ state = states.normal;
 //hitbox
 hb1 = false
 
+//knockback variables
+bulletDir = 0;
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hspd = 0
+
+state = states.normal;
 </string>
           </argument>
         </arguments>
@@ -178,84 +207,6 @@ state = states.normal;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///STATE MACHINE
-
-//script_execute(get_input);
-scr_collision();
-move_wrap(true, true, 1)
-
-//active or inactive mech
-if (global.p1_mech != 1)
-{
-    state = states.inactive
-}
-
-
-//script_execute(state);
-
-switch (state)
-{
-    case states.normal:
-        scr_move_paprika();
-        break;
-    case states.change:
-        scr_change();
-        break;
-    case states.attack:
-        scr_attack_paprika();
-        break;
-     case states.sattack:
-        scr_attack_second();
-        break; 
-    case states.dash:
-        scr_dash_paprika();
-        break;
-    case states.inactive:
-        scr_inactive();
-        break;
-        
-}
-
-
-
-
-
-
-/*
-//state active/inactive
-if (global.p1_mech != 1)
-{
-    get_input = scr_inactive
-}
-else
-{
-    get_input = scr_active
-}
-
-
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///SPRITE CONTROL
 
 
@@ -299,13 +250,13 @@ if(hspd == 0 and vspd == 0)
 
 var enemyDir = point_direction(x, y, obj_teste_vision.x, obj_teste_vision.y)     
 
-if  enemyDir &gt; 270 or enemyDir &lt; 90
-{
-    image_xscale = -1
-}
-else
+if  (hspd &gt; 0) and (state != states.knockback)
 {
     image_xscale = 1
+}
+if (hspd &lt; 0) and (state != states.knockback)
+{
+    image_xscale = -1
 }
 </string>
           </argument>
@@ -331,6 +282,117 @@ else
 if(keyboard_check(ord("K"))){
     hp--;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///STATE MACHINE
+
+//script_execute(get_input);
+scr_collision();
+move_wrap(true, true, 1)
+
+//active or inactive mech
+if (global.p1_mech != 1)
+{
+    state = states.inactive
+}
+
+
+//script_execute(state);
+
+switch (state)
+{
+    case states.normal:
+        scr_move_paprika();
+        break;
+    case states.change:
+        scr_change();
+        break;
+    case states.attack:
+        scr_attack_paprika();
+        break;
+     case states.sattack:
+        scr_attack_second();
+        break; 
+    case states.dash:
+        scr_dash_paprika();
+        break;
+    case states.inactive:
+        scr_inactive();
+        break;
+    case states.knockback:
+        scr_knockback_paprika();
+        break;
+        
+}
+
+
+
+
+
+
+/*
+//state active/inactive
+if (global.p1_mech != 1)
+{
+    get_input = scr_inactive
+}
+else
+{
+    get_input = scr_active
+}
+
+
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_bullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>bulletDir = point_direction(x, y, other.x, other.y)
+
+instance_destroy(other);
+hp -= 5;
+
+state = states.knockback
+
+
 </string>
           </argument>
         </arguments>

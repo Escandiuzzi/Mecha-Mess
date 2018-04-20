@@ -31,10 +31,10 @@
 image_speed = .05
 spd = 5
 dir = obj_paprika.image_xscale 
-//motion_add(dir,spd)
+image_xscale = dir
 
 y-=2
-x-= 15*dir
+x+= 15*dir
 
 
 
@@ -63,7 +63,33 @@ x-= 15*dir
             <string>if spd &gt; 5
 spd = 5
 
-x-= spd * dir
+x+= spd * dir
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemy0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>other.hp -= 5
+instance_destroy()
+
+
 </string>
           </argument>
         </arguments>

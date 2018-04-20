@@ -65,7 +65,8 @@ enum states
     inactive,
     jetpack,
     dash,
-    wallwalk
+    wallwalk,
+    knockback
     
 }
 
