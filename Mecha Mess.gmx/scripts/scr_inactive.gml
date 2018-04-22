@@ -9,6 +9,9 @@ rkey = 0;
 lkey = 0;
 jkey = 0;
 skey = 0;
+akey = 0;
+sakey = 0;
+
 
 /*
 

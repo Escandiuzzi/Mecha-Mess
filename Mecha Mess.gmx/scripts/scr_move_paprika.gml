@@ -1,5 +1,5 @@
 //get input
-scr_active();
+script_execute(get_input);
 
 //Check for ground
 if(place_meeting(x, y+1, obj_colBox))

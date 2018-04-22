@@ -1,5 +1,5 @@
 //get input
-scr_active();
+script_execute(get_input);
 
 attack = true;
 

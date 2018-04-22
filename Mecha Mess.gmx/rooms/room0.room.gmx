@@ -72,6 +72,8 @@
     <instance objName="obj_enemy0" x="288" y="256" name="inst_3DD749D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="0" y="464" name="inst_B91CE0A4" locked="0" code="" scaleX="1" scaleY="-16" colour="4294967295" rotation="0"/>
     <instance objName="obj_colBox" x="624" y="464" name="inst_FD8E37EF" locked="0" code="" scaleX="1" scaleY="-16" colour="4294967295" rotation="0"/>
+    <instance objName="obj_paprika_p2" x="496" y="320" name="inst_FF058C69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_paprika_orbs_p2" x="528" y="160" name="inst_F7C5CA33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset1" x="32" y="464" w="16" h="16" xo="16" yo="112" id="10000001" name="inst_A1A55C0D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

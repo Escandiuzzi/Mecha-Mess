@@ -57,6 +57,7 @@
     <scripts name="Mechs">
       <scripts name="General">
         <script>scripts\scr_active.gml</script>
+        <script>scripts\scr_active_p2.gml</script>
         <script>scripts\scr_inactive.gml</script>
       </scripts>
       <scripts name="Movement States">
@@ -102,6 +103,12 @@
       <object>objects\obj_paprika_hitbox</object>
       <object>objects\obj_dash_effect</object>
       <object>objects\obj_paprika_bullet</object>
+      <objects name="p2">
+        <object>objects\obj_paprika_bullet_p2</object>
+        <object>objects\obj_paprika_p2</object>
+        <object>objects\obj_paprika_hitbox_p2</object>
+        <object>objects\obj_paprika_orbs_p2</object>
+      </objects>
     </objects>
     <object>objects\obj_hadouken</object>
     <object>objects\obj_bullet</object>

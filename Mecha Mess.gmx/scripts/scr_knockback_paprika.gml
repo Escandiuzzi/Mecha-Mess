@@ -1,6 +1,6 @@
 ///scr_knockback_paprika
 
-hkb *= .7
+hkb *= .9
 vkb += .5
 
 

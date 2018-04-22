@@ -23,10 +23,10 @@ if(gamepad_is_connected(0)){
 }
 */
 
-rkey =  gamepad_button_check(0, gp_padr);
-lkey =  gamepad_button_check(0, gp_padl); 
+rkey = keyboard_check(vk_right); 
+lkey = keyboard_check(vk_left); 
 ukey = gamepad_button_check(0, gp_padu); 
-jkey = gamepad_button_check_pressed(0, gp_face1);
-skey =  gamepad_button_check_pressed(0, gp_shoulderlb);
-akey = gamepad_button_check_pressed(0, gp_face3); 
-sakey = gamepad_button_check_pressed(0, gp_shoulderrb); 
+jkey = keyboard_check_pressed(vk_up); 
+skey = keyboard_check_pressed(vk_shift); 
+akey = keyboard_check_pressed(ord("Z"));  
+sakey = keyboard_check_pressed(ord("X"));
