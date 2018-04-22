@@ -4,18 +4,9 @@ scr_active();
 //Check for ground
 if(place_meeting(x, y+1, obj_colBox))
 {
-    airjump = 1;
+    airjump = 2;
     vspd = 0;
-      
-    //Jumping
-    if(jkey)
-        {
-        vspd = -jspd;
-        image_index = 0
-        }
-    
-} 
-
+}
 else
 {
     // Gravity
@@ -24,6 +15,17 @@ else
           vspd += grav;
        }
 }
+      
+//Jumping
+if(jkey) and (airjump > 0)
+{
+    vspd = -jspd;
+    image_index = 0
+    airjump -= 1
+}
+    
+ 
+
 //Check for airjump
 
 
@@ -115,66 +117,6 @@ if((!rkey && !lkey) ||(rkey && lkey))
         }
     }
 }
-
-///AIRJUMP
-/*
-if (airjump > 0) 
-        {
-            if(jkey)
-            image_index = 0
-            {
-                vspd = -jspd;
-                airjump -= 1;
-            }
-        }
-    
-    if(keyboard_check_released(vk_up) && vspd <-4)
-        {
-        vspd = -4;
-        }
-*/
-
-
-
-
-
-
-
-
-/*
-//Horizontal Collision
-if(place_meeting(x+hspd, y, obj_colBox))
-{
-    while(!place_meeting(x+sign(hspd), y, obj_colBox))
-    {
-    x+=sign(hspd)
-    }
-    hspd = 0;
-}
-
-//Move Horizontally
-x+= hspd;
-
-//Vertical Collision
-if(place_meeting(x, y+vspd, obj_colBox))
-{
-    while(!place_meeting(x, y+ sign(vspd), obj_colBox))
-    {
-    y+=sign(vspd)
-    }
-    vspd = 0;
-}
-
-//Move Vertically
-y+= vspd;
-*/
-
-
-
-
-
-
-
 
 
 

@@ -18,7 +18,7 @@ var coLine = collision_line(x,y,obj_paprika.x,obj_paprika.y,obj_colBox,false,tru
 
 if !coLine and dis < 140 and alarm[0] <= 0 and alarm [1] <= 0
 {
-    alarm[0] = irandom_range (50,140)    
+    alarm[0] = irandom_range (50,70)    
 }
 
 ///back to idle

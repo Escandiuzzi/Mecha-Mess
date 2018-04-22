@@ -57,6 +57,8 @@ hb1 = false
 
 //knockback variables
 bulletDir = 0;
+hkb = 0;
+vkb = 0;
 
 
 </string>
@@ -385,10 +387,35 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bulletDir = point_direction(x, y, other.x, other.y)
+            <string>eDir = point_direction(x, y, other.x, other.y)
+
+
+
+if  eDir &gt; 270 or eDir &lt; 90
+{
+    colDir = -1
+    
+}
+else
+{
+    colDir = 1
+    
+}
+
 
 instance_destroy(other);
 hp -= 5;
+
+
+hkb = 4 * colDir;
+vkb = -3;
+
+
+image_speed = 0
+image_index = 2
+sprite_index = spr_paprika_KB
+
+
 
 state = states.knockback
 

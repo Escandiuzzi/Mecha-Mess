@@ -1,22 +1,38 @@
 ///scr_knockback_paprika
-image_speed = .2
-sprite_index = spr_paprika_KB
+
+hkb *= .7
+vkb += .5
 
 
-if  bulletDir > 270 or bulletDir < 90
-{
-    hspd = -3
-    vspd = -1
+       
+if colDir = 1
+{       
+    if hkb < .1
+    {
+        hkb = 0
+    }
 }
-else
+if colDir = -1
+{       
+    if hkb > -.1
+    {
+        hkb = 0
+    }
+}
+     
+
+
+if hkb = 0
 {
-    hspd = 3
-    vspd = -1
+    state = states.normal
 }
 
-if alarm[4] <= 0
-{
-    alarm[4] = 10
-}
+
+
+hspd = hkb
+vspd = vkb
+
+
+
 
 
