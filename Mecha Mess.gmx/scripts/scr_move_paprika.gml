@@ -144,11 +144,13 @@ if global.p1_changing = true
 
 if (skey) and (first_CD = 0) and hspd != 0
 {
-   sprite_index = spr_paprika_attack
+   //sprite_index = spr_paprika_attack
    image_index = 3
    first_CD = 1
    alarm[0] = 10
+   instance_create(x,y,myDashHB)
    state = states.dash
+   
    
 }
 

@@ -21,6 +21,7 @@
       <sprite>sprites\spr_orbs_normal</sprite>
       <sprite>sprites\spr_orbs_attacking</sprite>
       <sprite>sprites\spr_paprika_dash</sprite>
+      <sprite>sprites\spr_paprika_dash_hitbox</sprite>
     </sprites>
     <sprite>sprites\spr_mech2_walk</sprite>
     <sprite>sprites\spr_mech2_idle</sprite>
@@ -76,7 +77,6 @@
         <script>scripts\scr_dash_paprika.gml</script>
         <script>scripts\scr_knockback_paprika.gml</script>
         <script>scripts\scr_attack_second.gml</script>
-        <script>scripts\script17.gml</script>
       </scripts>
     </scripts>
     <scripts name="LIXEIRA">
@@ -102,12 +102,15 @@
       <object>objects\obj_paprika_orbs</object>
       <object>objects\obj_paprika_hitbox</object>
       <object>objects\obj_dash_effect</object>
+      <object>objects\obj_paprika_dash_hb</object>
       <object>objects\obj_paprika_bullet</object>
       <objects name="p2">
-        <object>objects\obj_paprika_bullet_p2</object>
         <object>objects\obj_paprika_p2</object>
-        <object>objects\obj_paprika_hitbox_p2</object>
         <object>objects\obj_paprika_orbs_p2</object>
+        <object>objects\obj_paprika_bullet_p2</object>
+        <object>objects\obj_paprika_hitbox_p2</object>
+        <object>objects\obj_dash_effect_p2</object>
+        <object>objects\obj_paprika_dash_hb_p2</object>
       </objects>
     </objects>
     <object>objects\obj_hadouken</object>

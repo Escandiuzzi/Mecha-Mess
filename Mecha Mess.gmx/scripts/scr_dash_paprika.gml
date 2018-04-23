@@ -1,10 +1,10 @@
 ///scr_dash_paprika
 
 sprite_index = spr_paprika_dash
-image_xscale = obj_paprika.image_xscale
+//image_xscale = obj_paprika.image_xscale
 image_speed = 0
 attack = true;
-var dash = instance_create(x,y, obj_dash_effect);
+var dash = instance_create(x,y, myDash);
 dash.sprite_index = spr_paprika_dash;
 
 
