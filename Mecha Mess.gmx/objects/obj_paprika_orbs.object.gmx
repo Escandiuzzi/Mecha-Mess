@@ -8,6 +8,31 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>mySprite = spr_orbs_normal;
+loop = 0;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -30,18 +55,47 @@ y = obj_paprika.y
 
 image_xscale = obj_paprika.image_xscale;
 
+///sprite control
+
+sprite_index = mySprite;
 
 
 if(obj_paprika.state == states.attack)
 {
-    sprite_index = spr_orbs_attacking;
+    mySprite = spr_orbs_attacking;
     image_speed = .2 //room_speed/3
+}
+else if (obj_paprika.state == states.block)
+{
+    image_speed = .1
+    mySprite = spr_orbs_block;
 }
 else
 {
-    sprite_index = spr_orbs_normal;
+    mySprite = spr_orbs_normal;
     image_speed = .1 //room_speed/6
 }
+
+
+///loop block sprites
+if (mySprite == spr_orbs_block)
+{
+    if image_index &gt;= 4
+    {
+        loop = 1;
+    }
+    if image_index&lt;4 &amp;&amp; loop == 1
+    {
+        image_index=4;
+    }
+}
+else
+{
+    loop = 0;
+}
+
+
+
 
 
 

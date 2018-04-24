@@ -11,7 +11,7 @@ jkey = 0;
 skey = 0;
 akey = 0;
 sakey = 0;
-
+bkey = 0;
 
 /*
 

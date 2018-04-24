@@ -23,10 +23,12 @@ if(gamepad_is_connected(0)){
 }
 */
 
-rkey =  gamepad_button_check(0, gp_padr);
-lkey =  gamepad_button_check(0, gp_padl); 
-ukey = gamepad_button_check(0, gp_padu); 
-jkey = gamepad_button_check_pressed(0, gp_face1);
-skey =  gamepad_button_check_pressed(0, gp_shoulderlb);
-akey = gamepad_button_check_pressed(0, gp_face3); 
-sakey = gamepad_button_check_pressed(0, gp_shoulderrb); 
+rkey =  gamepad_button_check(0, gp_padr); //right key
+lkey =  gamepad_button_check(0, gp_padl); //left key
+ukey = gamepad_button_check(0, gp_padu);  // up key
+jkey = gamepad_button_check_pressed(0, gp_face1); //jump key
+skey =  gamepad_button_check_pressed(0, gp_shoulderlb); //special skill key 
+akey = gamepad_button_check_pressed(0, gp_face3);  //attack key
+sakey = gamepad_button_check_pressed(0, gp_shoulderrb);  //second attack key
+bkey = gamepad_button_check(0, gp_shoulderl); //block key
+

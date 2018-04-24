@@ -109,15 +109,23 @@ if((!rkey && !lkey) ||(rkey && lkey))
     {
         if(hspd < 0 )
         {
-        hspd += fric;             
-        }    
-        else
+        hspd += fric;                     
+            if (hspd > 0.1)
+            {
+                hspd = 0    
+            }
+        }
+            
+        else if(hspd > 0)
         {
         hspd -= fric;
+            if (hspd < 0.1)
+            {
+                hspd = 0    
+            }
         }
     }
 }
-
 
 
 //Attack
@@ -131,6 +139,15 @@ if(sakey)
     state = states.sattack;
 }
 
+//Block
+
+if(bkey)
+{
+    
+    image_index = 0;
+    blockBox = instance_create(x,y, obj_paprika_blockBox);
+    state = states.block;
+}
 
 
 //state - Changing

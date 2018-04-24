@@ -30,3 +30,4 @@ jkey = keyboard_check_pressed(vk_up);
 skey = keyboard_check_pressed(vk_shift); 
 akey = keyboard_check_pressed(ord("Z"));  
 sakey = keyboard_check_pressed(ord("X"));
+bkey = keyboard_check(vk_control);
