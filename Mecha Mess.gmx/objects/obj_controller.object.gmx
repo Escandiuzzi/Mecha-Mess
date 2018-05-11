@@ -25,14 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initial variables
+            <string>///enum states
 
-grav = .7;
+enum states
+{
+    normal,
+    change,
+    attack,
+    sattack,
+    inactive,
+    jetpack,
+    dash,
+    wallwalk,
+    knockback,
+    block,
+    quick,
+    heal
+    
+}
 
 
 
-global.p1_mech = 1;
-global.p1_changing = false;
+
+
 
 </string>
           </argument>
@@ -54,28 +69,44 @@ global.p1_changing = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///enum states
+            <string>///Initial variables
 
-enum states
-{
-    normal,
-    change,
-    attack,
-    sattack,
-    inactive,
-    jetpack,
-    dash,
-    wallwalk,
-    knockback,
-    block
-    
-}
+grav = .7;
 
 
 
+global.p1_mech = 1;
+global.p1_changing = false;
+global.p1_active = obj_paprika;
+global.change_CD = 20;
 
 
+charSwitch = 1;
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.change_CD += 1
 </string>
           </argument>
         </arguments>
@@ -100,7 +131,7 @@ enum states
             <kind>1</kind>
             <string>global.p1_mech = 3;
 global.p1_changing = false
-obj_mech3.state = states.normal;
+obj_enji.state = states.normal;
 </string>
           </argument>
         </arguments>
@@ -148,9 +179,12 @@ obj_mech2.state = states.normal;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.p1_mech = 1;
+            <string>if obj_paprika.state = states.inactive
+{
+global.p1_mech = 1;
 global.p1_changing = false
-obj_mech1.state = states.normal;
+obj_paprika.state = states.normal;
+}
 </string>
           </argument>
         </arguments>
@@ -182,6 +216,109 @@ if global.p1_mech &lt; 0
 {
     global.p1_mech = 0
 }
+
+//cooldown change
+
+if (global.change_CD &lt; 20) and (alarm[4] &lt;= 0)
+{
+    alarm[4] = room_speed;
+}
+
+
+/*
+
+switch (global.p1_mech)
+{
+    case 1:
+        global.p1_active = obj_paprika;
+        break;
+    case 3:
+        global.p1_active = obj_enji;
+        break;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///JOYPAD INPUT CHANGE
+ukey = gamepad_button_check_pressed(0, gp_padu);  //up key
+dkey = gamepad_button_check_pressed(0, gp_padd); //down key
+
+if dkey and (global.change_CD == 20)
+{
+    charSwitch-=1
+    if charSwitch &lt; 1
+    {
+        charSwitch = 3;
+    }
+}
+if ukey and (global.change_CD == 20)
+{
+    charSwitch+=1
+    if charSwitch &gt; 3
+    {
+        charSwitch = 1;
+    }
+}
+
+
+
+if charSwitch == 1
+{
+    if (obj_paprika.state = states.inactive) and (global.change_CD == 20)
+    {   
+        global.p1_mech = 1;
+        global.p1_changing = false
+        obj_paprika.state = states.normal;
+        global.p1_active = obj_paprika;
+        global.change_CD = 0
+    }
+}
+  
+
+
+if charSwitch == 2
+{  
+    if (obj_mech2.state = states.inactive) and (global.change_CD == 20)
+    {
+        global.p1_mech = 2;
+        global.p1_changing = false
+        obj_mech2.state = states.normal;
+        global.p1_active = obj_mech2;
+        global.change_CD = 0;
+    }
+}
+
+
+
+if charSwitch == 3
+{  
+    if (obj_enji.state = states.inactive) and (global.change_CD == 20)
+    {
+        global.p1_mech = 3;
+        global.p1_changing = false
+        obj_enji.state = states.normal;
+        global.p1_active = obj_enji;
+        global.change_CD = 0;
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -205,6 +342,57 @@ if global.p1_mech &lt; 0
           <argument>
             <kind>1</kind>
             <string>game_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///draw HUD
+
+//health bar
+
+draw_sprite_ext(spr_hpbar,0, 78, 46, obj_paprika.hp/100*2,2,0,c_white,1)
+draw_sprite_ext(obj_paprika.hpBar, 0, 42, 42,2,2,0,c_white,1)
+draw_sprite_ext(spr_hpbar,0, 78, 46+48, obj_enji.hp/100*2,2,0,c_white,1)
+draw_sprite_ext(obj_enji.hpBar, 0, 42, 42+48,2,2,0,c_white,1)
+draw_sprite_ext(spr_hpbar,0, 78, 46+48+48, obj_enji.hp/100*2,2,0,c_white,1)
+draw_sprite_ext(spr_hpbar_bbboy, 0, 42, 42+48+48,2,2,0,c_white,1)
+
+switch (charSwitch)
+{
+    case 1:
+        draw_sprite_ext(spr_hpbar_select, 0, 42,42,2,2,0,c_white,1);
+        break;
+    case 2:
+        draw_sprite_ext(spr_hpbar_select, 0, 42,42+48+48,2,2,0,c_white,1);
+        break;
+    case 3:
+        draw_sprite_ext(spr_hpbar_select, 0, 42,42+48,2,2,0,c_white,1);
+        break;            
+}
+
+//draw_sprite_ext(spr_hpbar,0, 78, 46, global.p1_active.hp/100*2,2,0,c_white,1)
+//draw_sprite_ext(global.p1_active.hpBar, 0, 42, 42,2,2,0,c_white,1)
+
+//draw_sprite(spr_countdown_change,global.change_CD, 42, 650)
+draw_sprite_ext(spr_countdown_change,global.change_CD, 42, 1020,2,2,0,c_white,1)
 </string>
           </argument>
         </arguments>
@@ -274,10 +462,15 @@ game_restart();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mech3.state = states.inactive
+            <string>if (obj_enji.state = states.inactive) and (global.change_CD == 20)
 {
-    alarm[3] = room_speed/2;
-    global.p1_changing = true
+    global.p1_mech = 3;
+    global.p1_changing = false
+    obj_enji.state = states.normal;
+    global.p1_active = obj_enji;
+    global.change_CD = 0;
+    //alarm[3] = room_speed/2;
+    //global.p1_changing = true
 }
 
 </string>
@@ -330,12 +523,23 @@ game_restart();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mech1.state = states.inactive
+            <string>/*if obj_paprika.state = states.inactive
 {
     alarm[1] = room_speed/2;
     global.p1_changing = true
 }
+*/
 
+
+if (obj_paprika.state = states.inactive) and (global.change_CD == 20)
+{
+    
+    global.p1_mech = 1;
+    global.p1_changing = false
+    obj_paprika.state = states.normal;
+    global.p1_active = obj_paprika;
+    global.change_CD = 0
+}
 
 </string>
           </argument>

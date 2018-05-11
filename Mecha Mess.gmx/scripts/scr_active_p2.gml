@@ -29,5 +29,6 @@ ukey = gamepad_button_check(0, gp_padu);
 jkey = keyboard_check_pressed(vk_up); 
 skey = keyboard_check_pressed(vk_shift); 
 akey = keyboard_check_pressed(ord("Z"));  
+qakey = keyboard_check_pressed(ord("E"));
 sakey = keyboard_check_pressed(ord("X"));
 bkey = keyboard_check(vk_control);

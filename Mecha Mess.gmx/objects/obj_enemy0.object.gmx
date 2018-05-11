@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,10 +26,50 @@
           <argument>
             <kind>1</kind>
             <string>//initial variables
-hp = 100
+hp = 30
 state = scr_enemy0_idle
-
+hspd = 0
+vspd = 0
 image_speed = 0
+player = global.p1_active
+
+//knockback var
+
+hkb = 0
+vkb = 0
+
+
+death_sprite = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*image_alpha -= .2
+
+if image_alpha &lt;= 0
+{
+    instance_destroy();
+}
+*/
+
 
 </string>
           </argument>
@@ -54,8 +94,11 @@ image_speed = 0
           <argument>
             <kind>1</kind>
             <string>///GOES TO MOVE STATE
-if state != scr_enemy0_alert
+hspd = 0
+
+if state == scr_enemy0_idle
 {
+image_index = 0
 state = scr_enemy0_move
 }
 
@@ -82,8 +125,16 @@ state = scr_enemy0_move
           <argument>
             <kind>1</kind>
             <string>///BACK TO IDLE
+hspd = 0
 
-state = scr_enemy0_idle
+
+var coLine = collision_line(x,y,obj_paprika.x,obj_paprika.y,obj_colBox,false,true) 
+
+if coLine
+{
+    image_index = 0
+    state = scr_enemy0_idle
+}
 </string>
           </argument>
         </arguments>
@@ -108,7 +159,12 @@ state = scr_enemy0_idle
             <kind>1</kind>
             <string>///CREATE BULLET
 
-instance_create(x,y,obj_bullet)
+
+if state == scr_enemy0_alert
+{
+    instance_create(x,y,obj_bullet)
+}
+
 </string>
           </argument>
         </arguments>
@@ -132,16 +188,28 @@ instance_create(x,y,obj_bullet)
           <argument>
             <kind>1</kind>
             <string>///STEP 1
+
+player = global.p1_active
+
+if (hp &lt;= 0)
+{
+    state = scr_enemy0_death
+    if death_sprite == 1
+    {
+        image_index = 0 //reseta o sprite para iniciar a animacao de morte
+        death_sprite = 0
+    }
+}
+
 move_wrap(true, true, 1)
 
 ///State machine
 script_execute(state)
-
+scr_collision();
 
 ///Goes to alert state
-var dis = point_distance(x,y,obj_paprika.x,obj_paprika.y)
-var coLine = collision_line(x,y,obj_paprika.x,obj_paprika.y,obj_colBox,false,true) 
-
+var dis = point_distance(x,y,global.p1_active.x,global.p1_active.y)
+var coLine = collision_line(x,y,global.p1_active.x,global.p1_active.y,obj_colBox,false,true) 
 
 
 
@@ -154,18 +222,209 @@ if !place_meeting(x,y+4,obj_colBox)
 
 ///wall collision
 
-if place_meeting(x+2,y,obj_colBox)
+if place_meeting(x+3,y,obj_colBox)
 {
     image_xscale = -1
 }
 
-if place_meeting(x-2,y,obj_colBox)
+if place_meeting(x-3,y,obj_colBox)
 {
     image_xscale = 1
 }
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_paprika_bullet">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>eDir = point_direction(x, y, other.x, other.y)
+
+
+
+if  eDir &gt; 270 or eDir &lt; 90
+{
+    colDir = -1
+    
+}
+else
+{
+    colDir = 1
+    
+}
+
+instance_create(x,y-7,obj_hit);
+instance_destroy(other);
+hp -= 3;
+
+
+hkb = 2 * colDir;
+vkb = -1;
+
+state = scr_enemy0_knockback
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_paprika_dash_hb">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>eDir = point_direction(x, y, other.x, other.y)
+
+
+
+if  eDir &gt; 270 or eDir &lt; 90
+{
+    colDir = -1
+    
+}
+else
+{
+    colDir = 1
+    
+}
+
+instance_create(x,y-7,obj_hit);
+instance_destroy(other);
+hp -= 10;
+
+
+hkb = 6 * colDir;
+vkb = -1;
+
+state = scr_enemy0_knockback
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_paprika_qhitbox">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>eDir = point_direction(x, y, other.x, other.y)
+
+
+
+if  eDir &gt; 270 or eDir &lt; 90
+{
+    colDir = -1
+    
+}
+else
+{
+    colDir = 1
+    
+}
+
+instance_create(x,y-7,obj_hit);
+instance_destroy(other);
+hp -= 5;
+
+
+hkb = 3 * colDir;
+vkb = -1;
+
+state = scr_enemy0_knockback
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_paprika_hitbox">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>eDir = point_direction(x, y, other.x, other.y)
+
+
+
+if  eDir &gt; 270 or eDir &lt; 90
+{
+    colDir = -1
+    
+}
+else
+{
+    colDir = 1
+    
+}
+
+instance_create(x,y-7,obj_hit);
+instance_destroy(other);
+hp -= 10;
+
+
+hkb = 4 * colDir;
+vkb = -7;
+
+image_speed = 0
+image_index = 0
+
+
+state = scr_enemy0_knockback
 </string>
           </argument>
         </arguments>
@@ -188,11 +447,18 @@ if place_meeting(x-2,y,obj_colBox)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if state = scr_enemy0_move
+            <string>if state == scr_enemy0_move
 {
+    hspd = 0
     state = scr_enemy0_idle
 }
 
+
+/*
+if state == scr_enemy0_death
+{
+    instance_destroy();
+} 
 </string>
           </argument>
         </arguments>

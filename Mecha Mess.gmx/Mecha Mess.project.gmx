@@ -9,38 +9,61 @@
     <sprites name="Enemies">
       <sprites name="Enemy0">
         <sprite>sprites\spr_enemy0_move</sprite>
+        <sprite>sprites\spr_enemy0_death</sprite>
       </sprites>
-    </sprites>
-    <sprites name="Paprika">
-      <sprites name="range">
-        <sprite>sprites\spr_paprike_range</sprite>
-      </sprites>
-      <sprites name="orbs">
-        <sprite>sprites\spr_orbs_attacking</sprite>
-        <sprite>sprites\spr_orbs_normal</sprite>
-        <sprite>sprites\spr_orbs_block</sprite>
-      </sprites>
-      <sprite>sprites\spr_collision</sprite>
-      <sprite>sprites\spr_paprika_idle</sprite>
-      <sprite>sprites\spr_paprika_blockBox</sprite>
-      <sprite>sprites\spr_paprika_walk</sprite>
-      <sprite>sprites\spr_paprika_jump</sprite>
-      <sprite>sprites\spr_paprika_fall</sprite>
-      <sprite>sprites\spr_paprika_attack</sprite>
-      <sprite>sprites\spr_paprika_KB</sprite>
-      <sprite>sprites\spr_paprika_dash</sprite>
-      <sprite>sprites\spr_paprika_dash_hitbox</sprite>
     </sprites>
     <sprites name="general objects">
       <sprite>sprites\spr_colBox</sprite>
       <sprite>sprites\spr_hit</sprite>
+      <sprites name="countdown">
+        <sprite>sprites\spr_countdown_change</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\spr_mech2_walk</sprite>
-    <sprite>sprites\spr_mech2_idle</sprite>
+    <sprites name="Chars">
+      <sprites name="Paprika">
+        <sprites name="range">
+          <sprite>sprites\spr_paprike_range</sprite>
+        </sprites>
+        <sprites name="orbs">
+          <sprite>sprites\spr_orbs_attacking</sprite>
+          <sprite>sprites\spr_orbs_normal</sprite>
+          <sprite>sprites\spr_orbs_block</sprite>
+        </sprites>
+        <sprite>sprites\spr_collision</sprite>
+        <sprite>sprites\spr_paprika_idle</sprite>
+        <sprite>sprites\spr_paprika_blockBox</sprite>
+        <sprite>sprites\spr_paprika_walk</sprite>
+        <sprite>sprites\spr_paprika_jump</sprite>
+        <sprite>sprites\spr_paprika_fall</sprite>
+        <sprite>sprites\spr_paprika_attack</sprite>
+        <sprite>sprites\spr_paprika_KB</sprite>
+        <sprite>sprites\spr_paprika_dash</sprite>
+        <sprite>sprites\spr_paprika_dash_hitbox</sprite>
+        <sprite>sprites\spr_paprika_quick1</sprite>
+        <sprite>sprites\spr_paprika_hitbox</sprite>
+        <sprite>sprites\spr_paprika_qhitbox</sprite>
+      </sprites>
+      <sprites name="Enji">
+        <sprite>sprites\spr_enji_idle</sprite>
+        <sprite>sprites\spr_enji_healbox</sprite>
+      </sprites>
+      <sprites name="hp_bars">
+        <sprite>sprites\spr_hpbar_paprika</sprite>
+        <sprite>sprites\spr_hpbar_enji</sprite>
+        <sprite>sprites\spr_hpbar</sprite>
+        <sprite>sprites\spr_hpbar_bbboy</sprite>
+        <sprite>sprites\spr_hpbar_select</sprite>
+      </sprites>
+      <sprites name="bb-boy">
+        <sprite>sprites\spr_bbboy_idle</sprite>
+        <sprite>sprites\spr_bbboy_shield</sprite>
+      </sprites>
+    </sprites>
     <sprite>sprites\spr_change</sprite>
     <sprite>sprites\spr_block2</sprite>
+    <sprite>sprites\spr_mech2_walk</sprite>
+    <sprite>sprites\spr_mech2_idle</sprite>
     <sprite>sprites\spr_mech1</sprite>
-    <sprite>sprites\spr_paprika_hitbox</sprite>
     <sprite>sprites\spr_mech2</sprite>
     <sprite>sprites\spr_mech3</sprite>
     <sprite>sprites\spr_alarm</sprite>
@@ -57,6 +80,8 @@
     <background>background\bg_1</background>
     <background>background\bg_tileset1</background>
     <background>background\bg_2</background>
+    <background>background\bg_3</background>
+    <background>background\ts_3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -76,13 +101,21 @@
       <scripts name="bb-boy scripts">
         <script>scripts\scr_fuel.gml</script>
       </scripts>
-      <scripts name="Paprika">
-        <script>scripts\scr_move_paprika.gml</script>
-        <script>scripts\scr_attack_paprika.gml</script>
-        <script>scripts\scr_dash_paprika.gml</script>
-        <script>scripts\scr_knockback_paprika.gml</script>
-        <script>scripts\scr_attack_second.gml</script>
-        <script>scripts\scr_paprika_block.gml</script>
+      <scripts name="Chars">
+        <scripts name="Paprika">
+          <script>scripts\scr_move_paprika.gml</script>
+          <script>scripts\scr_attack_paprika.gml</script>
+          <script>scripts\scr_quick_paprika.gml</script>
+          <script>scripts\scr_dash_paprika.gml</script>
+          <script>scripts\scr_knockback_paprika.gml</script>
+          <script>scripts\scr_attack_second.gml</script>
+          <script>scripts\scr_paprika_block.gml</script>
+        </scripts>
+        <scripts name="Enji">
+          <script>scripts\scr_move_enji.gml</script>
+          <script>scripts\scr_heal_enji.gml</script>
+          <script>scripts\script24.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="LIXEIRA">
@@ -93,6 +126,8 @@
         <script>scripts\scr_enemy0_move.gml</script>
         <script>scripts\scr_enemy0_idle.gml</script>
         <script>scripts\scr_enemy0_alert.gml</script>
+        <script>scripts\scr_enemy0_knockback.gml</script>
+        <script>scripts\scr_enemy0_death.gml</script>
       </scripts>
     </scripts>
   </scripts>
@@ -104,35 +139,42 @@
       <object>objects\obj_controller</object>
       <object>objects\obj_hit</object>
     </objects>
-    <objects name="Paprika">
-      <object>objects\obj_paprika</object>
-      <object>objects\obj_paprika_orbs</object>
-      <object>objects\obj_paprika_hitbox</object>
-      <object>objects\obj_dash_effect</object>
-      <object>objects\obj_paprika_dash_hb</object>
-      <object>objects\obj_paprika_blockBox</object>
-      <object>objects\obj_paprika_bullet</object>
-      <objects name="p2">
-        <object>objects\obj_paprika_p2</object>
-        <object>objects\obj_paprika_orbs_p2</object>
-        <object>objects\obj_paprika_bullet_p2</object>
-        <object>objects\obj_paprika_hitbox_p2</object>
-        <object>objects\obj_dash_effect_p2</object>
-        <object>objects\obj_paprika_dash_hb_p2</object>
+    <objects name="Chars">
+      <objects name="Paprika">
+        <object>objects\obj_paprika</object>
+        <object>objects\obj_paprika_orbs</object>
+        <object>objects\obj_paprika_hitbox</object>
+        <object>objects\obj_paprika_qhitbox</object>
+        <object>objects\obj_dash_effect</object>
+        <object>objects\obj_paprika_dash_hb</object>
+        <object>objects\obj_paprika_blockBox</object>
+        <object>objects\obj_paprika_bullet</object>
+        <objects name="p2">
+          <object>objects\obj_paprika_p2</object>
+          <object>objects\obj_paprika_orbs_p2</object>
+          <object>objects\obj_paprika_bullet_p2</object>
+          <object>objects\obj_paprika_hitbox_p2</object>
+          <object>objects\obj_dash_effect_p2</object>
+          <object>objects\obj_paprika_dash_hb_p2</object>
+        </objects>
+      </objects>
+      <objects name="Enji">
+        <object>objects\obj_enji</object>
+        <object>objects\obj_enji_healbox</object>
       </objects>
     </objects>
-    <object>objects\obj_hadouken</object>
-    <object>objects\obj_bullet</object>
-    <object>objects\obj_mech2</object>
-    <object>objects\obj_mech3</object>
-    <object>objects\obj_teste_vision</object>
-    <object>objects\obj_button</object>
-    <object>objects\obj_clock2</object>
     <objects name="Enemies">
       <objects name="Enemy0">
         <object>objects\obj_enemy0</object>
       </objects>
+      <object>objects\obj_bullet</object>
     </objects>
+    <object>objects\obj_mech2</object>
+    <object>objects\obj_hadouken</object>
+    <object>objects\obj_mech3</object>
+    <object>objects\obj_teste_vision</object>
+    <object>objects\obj_button</object>
+    <object>objects\obj_clock2</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>

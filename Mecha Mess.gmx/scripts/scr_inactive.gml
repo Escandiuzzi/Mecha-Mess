@@ -1,18 +1,23 @@
-image_alpha = 0.5;
+image_alpha = 1;
+image_blend = c_dkgray
 sprite_index = mech_sprite
+hspd = 0;
 
 //if (place_meeting(x, y+1, obj_colBox))
 
 ///move stuff
-
+xaxis = 0
+yaxis = 0
 rkey = 0;
 lkey = 0;
+ukey = 0;
+dkey = 0;
 jkey = 0;
 skey = 0;
 akey = 0;
 sakey = 0;
 bkey = 0;
-
+hkey = 0;
 /*
 
 if (place_meeting(x, y+1, obj_colBox))

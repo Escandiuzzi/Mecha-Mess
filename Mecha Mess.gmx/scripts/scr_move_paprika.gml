@@ -20,7 +20,7 @@ else
 if(jkey) and (airjump > 0)
 {
     vspd = -jspd;
-    image_index = 0
+    image_index = 3
     airjump -= 1
 }
     
@@ -45,7 +45,7 @@ face = 0;
    }   
 }
 //Left Wall Jump
-if(wall < 3) and jkey
+/*if(wall < 3) and jkey
         {
         image_index = 0
             if (place_meeting(x-1, y , obj_colBox)) && !place_meeting(x, y+1, obj_colBox)
@@ -63,7 +63,7 @@ if(wall < 3) and jkey
             {
             wall = 0
             }   
-
+*/
 
 
 
@@ -83,7 +83,7 @@ face = 1;
 }
 
 //Right Wall Jump
-if(wall < 3) and jkey
+/*if(wall < 3) and jkey
         {
         image_index = 0
             if (place_meeting(x+1, y , obj_colBox)) && !place_meeting(x, y+1, obj_colBox)
@@ -100,7 +100,7 @@ if(wall < 3) and jkey
             {
             wall = 0
             }    
-
+*/
 
 //Check for not moving
 if((!rkey && !lkey) ||(rkey && lkey))
@@ -134,6 +134,11 @@ if(akey)
     state = states.attack;
     image_index = 0
 }
+if(qakey)
+{
+    state = states.quick;
+    image_index = 0
+}
 if(sakey)
 {
     state = states.sattack;
@@ -145,6 +150,7 @@ if(bkey)
 {
     
     image_index = 0;
+    obj_paprika_orbs.image_index = 0;
     blockBox = instance_create(x,y, obj_paprika_blockBox);
     state = states.block;
 }
@@ -166,15 +172,14 @@ if (skey) and (first_CD = 0) and hspd != 0
    first_CD = 1
    alarm[0] = 10
    instance_create(x,y,myDashHB)
-   state = states.dash
-   
-   
+   state = states.dash 
 }
 
 
 
 
 //SPRITE CONTROL
+
 
 if(hspd == 0 and vspd == 0 and place_meeting(x, y+1,obj_colBox))
     {
@@ -203,7 +208,7 @@ if(vspd > 0)
         image_speed = .1//room_speed/6;
         
     }
-if(state == states.dash)
+/*if(state == states.dash)
 {
     {
         sprite_index = spr_paprika_attack

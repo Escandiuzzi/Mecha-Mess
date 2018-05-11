@@ -25,9 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bulletSpeed = 3
+            <string>hpbarSelect[1] = 42;
+hpbarSelect[2] = 42+48;
+hpbarSelect[3] = 42+48+48;
+
+
+dmg = 20;
+bulletSpeed = 4
 deflected = false
-move_towards_point(obj_paprika.x,obj_paprika.y, bulletSpeed)
+player = global.p1_active
+move_towards_point(player.x,player.y, bulletSpeed)
 
 </string>
           </argument>

@@ -78,11 +78,12 @@ else
 
 
 ///loop block sprites
-if (mySprite == spr_orbs_block)
+if (sprite_index == spr_orbs_block)
 {
     if image_index &gt;= 4
     {
         loop = 1;
+        
     }
     if image_index&lt;4 &amp;&amp; loop == 1
     {

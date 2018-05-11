@@ -39,7 +39,7 @@ face = 0;
 mspd = 7;
 
 //personal and unique variables for this mech skills
-
+hpBar = spr_hpbar_paprika;
 myDashHB = obj_paprika_dash_hb;
 myDash = obj_dash_effect;
 myBullet = obj_paprika_bullet;
@@ -57,6 +57,7 @@ state = states.normal;
 
 //hitbox
 hb1 = false
+hb2 = false
 
 //knockback variables
 bulletDir = 0;
@@ -146,10 +147,17 @@ attack = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>attack = false;
+            <string>//attack = false;
 
-instance_create(x,y,obj_paprika_hitbox);
+if state = states.attack
+{
+    instance_create(x,y,obj_paprika_hitbox);
+}
 
+if state = states.quick
+{
+     instance_create(x,y,obj_paprika_qhitbox);
+}
 </string>
           </argument>
         </arguments>
@@ -221,8 +229,14 @@ state = states.normal;
           <argument>
             <kind>1</kind>
             <string>///TEST HEALTHBAR
-if(keyboard_check(ord("K"))){
-    hp--;
+if hp &gt;= 100
+{
+    hp = 100
+}
+
+if hp &lt; 0
+{
+    hp = 0
 }
 </string>
           </argument>
@@ -284,6 +298,9 @@ switch (state)
         break;
     case states.block:
         scr_paprika_block();
+        break;
+    case states.quick:
+        scr_quick_paprika();
         break;
         
 }
@@ -369,18 +386,18 @@ if(hspd == 0 and vspd == 0)
    
    */
 
-var enemyDir = point_direction(x, y, obj_teste_vision.x, obj_teste_vision.y)     
+//var enemyDir = point_direction(x, y, obj_teste_vision.x, obj_teste_vision.y)     
 
 if  (hspd &gt; 0)
 {
-    if  (state != states.block) and (state != states.knockback)
+    if  (state != states.block) and (state != states.knockback) and (state != states.quick)
     {
         image_xscale = 1
     }
 }
 if (hspd &lt; 0)
 {
-        if  (state != states.block) and (state != states.knockback)
+        if  (state != states.block) and (state != states.knockback) and (state != states.quick)
     {
         image_xscale = -1
     }
@@ -407,38 +424,41 @@ if (hspd &lt; 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>eDir = point_direction(x, y, other.x, other.y)
-
-
-
-if  eDir &gt; 270 or eDir &lt; 90
+            <string>if state != states.inactive
 {
-    colDir = -1
     
-}
-else
-{
-    colDir = 1
+    eDir = point_direction(x, y, other.x, other.y)
     
+    
+    
+    if  eDir &gt; 270 or eDir &lt; 90
+    {
+        colDir = -1
+        
+    }
+    else
+    {
+        colDir = 1
+        
+    }
+    
+    
+    instance_destroy(other);
+    hp -= other.dmg;
+    
+    
+    hkb = 4 * colDir;
+    vkb = -3;
+    
+    
+    image_speed = 0
+    image_index = 2
+    sprite_index = spr_paprika_KB
+    
+    
+    
+    state = states.knockback
 }
-
-
-instance_destroy(other);
-hp -= 5;
-
-
-hkb = 4 * colDir;
-vkb = -3;
-
-
-image_speed = 0
-image_index = 2
-sprite_index = spr_paprika_KB
-
-
-
-state = states.knockback
-
 
 </string>
           </argument>
@@ -686,6 +706,12 @@ hspd = 0;
     state = states.normal
     hb1 = false
 }
+
+if sprite_index = spr_paprika_quick1
+{
+    state = states.normal
+    hb1 = false
+}
 </string>
           </argument>
         </arguments>
@@ -708,7 +734,9 @@ hspd = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var hb;
+            <string>/*
+
+var hb;
 hb = (hp / max_hp) * 100;
 draw_healthbar(view_xview[0] + 45, view_yview[0] + 64, view_xview[0] + 300, view_yview[0] + 100, hb, c_black, c_red, c_green, 0, true , false);
 
